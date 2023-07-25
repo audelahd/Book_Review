@@ -9,7 +9,7 @@
     <result property="articleNO" column="articleNO" />
     <result property="parentNO" column="parentNO" />
     <result property="staring" column="staring" />
-    <result property="booktitle" column="booktitle" />
+    <result property="booknum" column="booknum" />
     <result property="content" column="content" />
     <result property="writeDate" column="writeDate" />
     
@@ -23,7 +23,7 @@
 
   <select id="selectAllArticlesList" resultMap="articlesResult"   >
     <![CDATA[
-      SELECT level, articleNO, parentNO, booktitle, content, staring, writeDate,id
+      SELECT level, articleNO, parentNO, booknum, content, staring, writeDate,id
       from t_board
       START WITH  parentNO=0
       CONNECT BY PRIOR articleNO=parentNO 
@@ -35,8 +35,8 @@
 	 
   <insert id="insertNewArticle"  parameterType="java.util.Map">
 		<![CDATA[
-			INSERT into t_board(articleNO,  booktitle, content, staring, id)
-			VALUES(#{articleNO},#{booktitle},	#{content}, #{staring},	#{id})
+			INSERT into t_board(articleNO,   content, staring, id, booknum)
+			VALUES(#{articleNO},	#{content}, #{staring},	#{id}, #{booknum})
 		]]>      
 	</insert>
 	

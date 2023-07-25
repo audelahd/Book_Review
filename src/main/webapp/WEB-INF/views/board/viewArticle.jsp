@@ -33,9 +33,9 @@
      }
  
 	 function fn_enable(obj){
-		 document.getElementById("i_title").disabled=false;
+		// document.getElementById("i_title").disabled=false;
 		 document.getElementById("i_content").disabled=false;
-		 document.getElementById("i_imageFileName").disabled=false;
+		 document.getElementById("i_staring").disabled=false;
 		 document.getElementById("tr_btn_modify").style.display="block";
 		 document.getElementById("tr_file_upload").style.display="block";
 		 document.getElementById("tr_btn").style.display="none";
@@ -111,7 +111,7 @@
       책 제목 
    </td>
    <td>
-    <input type=text value="${article.booktitle }"  name="title"  id="i_title" disabled />
+    <input type=text value="${article.booknum }"  name="title"  id="i_title" disabled />
    </td>   
   </tr>
   <tr>
@@ -119,7 +119,7 @@
       내용
    </td>
    <td>
-    <textarea rows="20" cols="60"  name="content"  id="i_content"  disabled />${article.content }</textarea>
+    <textarea rows="20" cols="60"  name="content"  id="i_content"  disabled >${article.content }</textarea>
    </td>  
   </tr>
   
@@ -128,7 +128,7 @@
       별점
    </td>
    <td>
-    <textarea rows="20" cols="60"  name="staring"  id="i_content"  disabled />${article.staring }</textarea>
+    <textarea rows="20" cols="60"  name="staring"  id="i_staring"  disabled >${article.staring }</textarea>
    </td>  
   </tr>
  <%-- 
