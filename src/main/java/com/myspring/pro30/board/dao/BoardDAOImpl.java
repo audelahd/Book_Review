@@ -17,31 +17,6 @@ import com.myspring.pro30.board.vo.ImageVO;
 public class BoardDAOImpl implements BoardDAO {
 	@Autowired
 	private SqlSession sqlSession;
-	
-	
-	
-	public String Starstar(float staring) {
-		String result ="";
-		
-		if (staring != 0.0f) {
-			double starnum1 = staring % 1.0;
-			double starnum2 = staring / 1.0;
-
-			if (starnum1 == 0.5) {
-				for (int i = 0; i < starnum2-1; i++) {
-					result += "★";
-				}
-				result += "☆";
-			} else {
-				for (int i = 0; i < starnum2; i++) {
-					result += "★";
-				}
-			}
-		}
-		
-		System.out.println(result);
-		return result;
-	}
 
 	@Override
 	public List selectAllArticlesList() throws DataAccessException {
@@ -58,7 +33,7 @@ public class BoardDAOImpl implements BoardDAO {
 		return articleNO;
 	}
     
-	//���� ���� ���ε�
+
 	/*
 	@Override
 	public void insertNewImage(Map articleMap) throws DataAccessException {

@@ -45,8 +45,8 @@
 					<td colspan=2  align="left"><input type="text" size="20" maxlength="100"  value="${member.name }" readonly/> </td>
 			</tr>
 	     <tr>
-			   <td align="right">책 번호: </td>
-			   <td colspan="2"><input type="text" size="67"  maxlength="500" name="booknum" /></td>
+			   <td align="right">책 제목: </td>
+			   <td colspan="2"><input type="text" size="67"  maxlength="500" name="booktitle_" /></td>
 		 </tr>
 	 		<tr>
 				<td align="right" valign="top"><br>리뷰 내용: </td>

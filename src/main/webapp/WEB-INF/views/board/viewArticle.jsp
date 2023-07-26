@@ -111,7 +111,7 @@
       책 제목 
    </td>
    <td>
-    <input type=text value="${article.booknum }"  name="title"  id="i_title" disabled />
+    <input type=text value="${article.booktitle_ }"  name="title"  id="i_title" disabled />
    </td>   
   </tr>
   <tr>

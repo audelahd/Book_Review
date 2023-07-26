@@ -10,10 +10,16 @@
 <!DOCTYPE html>
 <html>
 <head>
- <!-- <style>
-   .cls1 {text-decoration:none;}
-   .cls2{text-align:center; font-size:30px;}
-  </style> -->
+<style>
+tr{
+background-color:yellow;
+}
+ td{
+background-color:white;
+
+} 
+
+</style>
   <meta charset="UTF-8">
   
    
@@ -35,12 +41,11 @@
 <body>
 <table align="center" border="1"  width="80%"  >
   <tr height="10" align="center"  bgcolor="lightgreen">
-     <td >글 번호</td>
-      <td >책 번호</td>
-     <td >구 책 제목</td>              
-     <td >별점</td>
-     <td >작성자</td>
-     <td >작성일</td>
+     <th >글 번호</th>
+     <th >책 제목</th>              
+     <th >별점</th>
+     <th >작성자</th>
+     <th >작성일</th>
   </tr>
 <c:choose>
   <c:when test="${articlesList ==null }" >
@@ -56,7 +61,6 @@
     <c:forEach  var="article" items="${articlesList }" varStatus="articleNum" >
      <tr align="center">
 	<td width="5%">${articleNum.count}</td>
-	<td width="5%">${article.booknum}</td>
 	<td align='left'  width="35%">
 	  <span style="padding-right:30px"></span>
 	   <c:choose>
@@ -65,10 +69,10 @@
 	              <span style="padding-left:20px"></span>    
 	         </c:forEach>
 	         <span style="font-size:12px;">[의견]</span>
-                   <a class='cls1' href="${contextPath}/board/viewArticle.do?articleNO=${article.articleNO}">임시제목</a>
+                   <a class='cls1' href="${contextPath}/board/viewArticle.do?articleNO=${article.articleNO}">${article.booktitle_ }</a>
 	          </c:when>
 	          <c:otherwise>
-	            <a class='cls1' href="${contextPath}/board/viewArticle.do?articleNO=${article.articleNO}">임시제목</a>
+	            <a class='cls1' href="${contextPath}/board/viewArticle.do?articleNO=${article.articleNO}">${article.booktitle_ }</a>
 	          </c:otherwise>
 	        </c:choose>
 	  </td>

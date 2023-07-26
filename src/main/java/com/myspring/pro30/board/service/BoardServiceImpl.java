@@ -24,15 +24,23 @@ public class BoardServiceImpl  implements BoardService{
 		List<ArticleVO> articlesList =  boardDAO.selectAllArticlesList();
         return articlesList;
 	}
+	
+	 //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ì±ï¿½
+	@Override
+	public ArticleVO viewArticle(int articleNO) throws Exception {
+		ArticleVO articleVO = boardDAO.selectArticle(articleNO);
+		return articleVO;
+	}
+	
 
 	
-	//´ÜÀÏ ÀÌ¹ÌÁö Ãß°¡ÇÏ±â
+	//ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¹ï¿½ï¿½ï¿½ ï¿½ß°ï¿½ï¿½Ï±ï¿½
 	@Override
 	public int addNewArticle(Map articleMap) throws Exception{
 		return boardDAO.insertNewArticle(articleMap);
 	}
 	
-	 //´ÙÁß ÀÌ¹ÌÁö Ãß°¡ÇÏ±â
+	 //ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¹ï¿½ï¿½ï¿½ ï¿½ß°ï¿½ï¿½Ï±ï¿½
 	/*
 	@Override
 	public int addNewArticle(Map articleMap) throws Exception{
@@ -43,7 +51,7 @@ public class BoardServiceImpl  implements BoardService{
 	}
 	*/
 	/*
-	//´ÙÁß ÆÄÀÏ º¸ÀÌ±â
+	//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ì±ï¿½
 	@Override
 	public Map viewArticle(int articleNO) throws Exception {
 		Map articleMap = new HashMap();
@@ -55,13 +63,6 @@ public class BoardServiceImpl  implements BoardService{
 	}
    */
 	
-	
-	 //´ÜÀÏ ÆÄÀÏ º¸ÀÌ±â
-	@Override
-	public ArticleVO viewArticle(int articleNO) throws Exception {
-		ArticleVO articleVO = boardDAO.selectArticle(articleNO);
-		return articleVO;
-	}
 	
 	
 	@Override

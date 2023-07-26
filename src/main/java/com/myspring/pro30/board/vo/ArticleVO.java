@@ -13,9 +13,9 @@ public class ArticleVO {
 	private int articleNO; // 글 번호
 	private int parentNO; // 의견
 	private float staring; // 별점
-	private String star;
 	private int booknum;
 	private String booktitle; // 책 제목
+	private String booktitle_; // 책 제목
 	private String content; // 리뷰 내용
 	private String imageFileName; // 이미지 파일
 	private String id; // 작성자
@@ -23,6 +23,14 @@ public class ArticleVO {
 
 	
 	
+	public String getBooktitle_() {
+		return booktitle_;
+	}
+
+	public void setBooktitle_(String booktitle_) {
+		this.booktitle_ = booktitle_;
+	}
+
 	public int getBooknum() {
 		return booknum;
 	}
