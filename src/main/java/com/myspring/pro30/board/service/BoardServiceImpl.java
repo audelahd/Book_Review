@@ -1,6 +1,5 @@
 package com.myspring.pro30.board.service;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -11,7 +10,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.myspring.pro30.board.dao.BoardDAO;
 import com.myspring.pro30.board.vo.ArticleVO;
-import com.myspring.pro30.board.vo.ImageVO;
 
 
 @Service("boardService")
@@ -20,11 +18,13 @@ public class BoardServiceImpl  implements BoardService{
 	@Autowired
 	BoardDAO boardDAO;
 	
+	
 	public List<ArticleVO> listArticles() throws Exception{
 		List<ArticleVO> articlesList =  boardDAO.selectAllArticlesList();
         return articlesList;
 	}
 	
+ 	
 	 //���� ���� ���̱�
 	@Override
 	public ArticleVO viewArticle(int articleNO) throws Exception {
@@ -65,11 +65,20 @@ public class BoardServiceImpl  implements BoardService{
 	
 	
 	
+	
+	
 	@Override
 	public void modArticle(Map articleMap) throws Exception {
 		boardDAO.updateArticle(articleMap);
 	}
 	
+	@Override
+	public void RECOUP(int articleNO) throws Exception {
+		boardDAO.updateReco(articleNO);
+		
+	}
+
+
 	@Override
 	public void removeArticle(int articleNO) throws Exception {
 		boardDAO.deleteArticle(articleNO);

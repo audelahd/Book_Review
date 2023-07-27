@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+      PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapper.book">
+<resultMap id="booksResult" type="bookVO">
+   
+    <result property="booktitle" column="booktitle" />
+    <result property="bookwriter" column="bookwriter" />
+    <result property="genre" column="genre" />
+    <result property="bookinfo" column="bookinfo"/>
+    
+  </resultMap> 
+
+  <select id="selectAllBooksList" resultMap="booksResult"   >
+    <![CDATA[
+      SELECT booktitle, bookwriter, genre, bookinfo
+      from t_book		
+    ]]>
+  </select>
+  
+  <select id="selectBook" resultType="bookVO"   parameterType="String">
+    <![CDATA[
+      SELECT * from t_book
+      where
+      booktitle = #{booktitle}		
+    ]]>
+  </select>
+  
+
+  
+</mapper>

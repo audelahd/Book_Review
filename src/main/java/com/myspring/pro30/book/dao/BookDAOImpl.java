@@ -17,13 +17,14 @@ public class BookDAOImpl implements BookDAO {
 
 	@Override
 	public List selectAllBooksList() throws DataAccessException {
-		List<BookVO> booksList = booksList = sqlSession.selectList("");
+		List<BookVO> booksList = booksList = sqlSession.selectList("mapper.book.selectAllBooksList");
 		return booksList;
 	}
 
 	@Override
 	public BookVO selectBook(String booktitle) throws DataAccessException {
-		return sqlSession.selectOne("", booktitle);
+		System.out.println("DAO 들어옴");
+		return sqlSession.selectOne("mapper.book.selectBook", booktitle);
 	}
 	
 	

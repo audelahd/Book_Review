@@ -1,7 +1,6 @@
 package com.myspring.pro30.board.controller;
 
 import java.io.File;
-import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -14,7 +13,6 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -29,7 +27,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.myspring.pro30.board.service.BoardService;
 import com.myspring.pro30.board.vo.ArticleVO;
-import com.myspring.pro30.board.vo.ImageVO;
 import com.myspring.pro30.member.vo.MemberVO;
 
 
@@ -52,7 +49,47 @@ public class BoardControllerImpl  implements BoardController{
 		
 	}
 	
-	 //글 쓰기 
+	
+	@RequestMapping(value="/home")
+	public String home() {
+		return "/home";
+	}
+	
+
+	
+	
+
+	//글 추천 
+	@Override
+	@RequestMapping(value="/board/recoUp.do", method=RequestMethod.POST)
+	@ResponseBody
+	public ResponseEntity recoUp(@RequestParam("articleNO") int articleNO, HttpServletRequest request, HttpServletResponse response)
+			throws Exception {
+		
+		System.out.println("1");
+		response.setContentType("text/html; charset=UTF-8");
+		System.out.println("1");
+		ResponseEntity resEnt = null;
+		System.out.println("1");
+		HttpHeaders responseHeaders = new HttpHeaders();
+		System.out.println("1");
+		responseHeaders.add("Content-Type", "text/html; charset=utf-8");
+		System.out.println("1");
+		String message;
+		System.out.println("1");
+		
+		boardService.RECOUP(articleNO);
+		System.out.println("1");
+		message="<script> alert('추천되었습니다) location.href='"+request.getContextPath();
+		message+=" /board/listArticles.do'; </script>";
+		System.out.println("1");
+		resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
+		
+		return resEnt;
+	}
+
+
+	//글 쓰기 
 	@Override
 	@RequestMapping(value="/board/addNewArticle.do" ,method = RequestMethod.POST)
 	@ResponseBody
@@ -120,21 +157,6 @@ public class BoardControllerImpl  implements BoardController{
 		return mav;
 	}
 	
-	/*
-	//���� �̹��� �����ֱ�
-	@RequestMapping(value="/board/viewArticle.do" ,method = RequestMethod.GET)
-	public ModelAndView viewArticle(@RequestParam("articleNO") int articleNO,
-			  HttpServletRequest request, HttpServletResponse response) throws Exception{
-		String viewName = (String)request.getAttribute("viewName");
-		Map articleMap=boardService.viewArticle(articleNO);
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName(viewName);
-		mav.addObject("articleMap", articleMap);
-		return mav;
-	}
-   */
-	
-
 	
   //글 수정
   @RequestMapping(value="/board/modArticle.do" ,method = RequestMethod.POST)

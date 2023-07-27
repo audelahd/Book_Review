@@ -7,22 +7,6 @@
 <html>
 <head>
 <meta charset="UTF-8">
- <style>
-    header {
-		background: #303238 url("https://cdn.pixabay.com/photo/2016/09/10/17/18/book-1659717_1280.jpg");
-		filter:blur(5px);
-		
-	}
-	body::before{
-	
-	filter:blur(5px);
-	}
-	body{
-	background: #303238 url("https://cdn.pixabay.com/photo/2017/03/25/03/18/white-2172682_1280.jpg");
-	}
-      
-      
-    </style>
 
 <meta charset="utf-8" />
 <meta name="viewport"
@@ -33,9 +17,6 @@
 	<div id="container">
 		<div id="header">
 			<tiles:insertAttribute name="header" />
-		</div>
-		<div id="sidebar-left">
-			<tiles:insertAttribute name="side" />
 		</div>
 		<div id="content">
 			<tiles:insertAttribute name="body" />

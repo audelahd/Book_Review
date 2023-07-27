@@ -20,9 +20,19 @@ public class ArticleVO {
 	private String imageFileName; // 이미지 파일
 	private String id; // 작성자
 	private Date writeDate; // 작성일
+	private int reco;
+	
+	
+	
+	
+	public int getReco() {
+		return reco;
+	}
 
-	
-	
+	public void setReco(int reco) {
+		this.reco = reco;
+	}
+
 	public String getBooktitle_() {
 		return booktitle_;
 	}

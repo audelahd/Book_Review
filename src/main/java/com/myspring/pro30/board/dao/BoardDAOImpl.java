@@ -33,6 +33,8 @@ public class BoardDAOImpl implements BoardDAO {
 		return articleNO;
 	}
     
+	
+	
 
 	/*
 	@Override
@@ -48,7 +50,15 @@ public class BoardDAOImpl implements BoardDAO {
 	}
 	
    */
-	
+
+
+	@Override
+	public void updateReco(int articleNO) throws DataAccessException {
+		sqlSession.update("mapper.board.recoUp", articleNO);
+		
+	}
+
+
 	@Override
 	public ArticleVO selectArticle(int articleNO) throws DataAccessException {
 		return sqlSession.selectOne("mapper.board.selectArticle", articleNO);

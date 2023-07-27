@@ -3,12 +3,13 @@ package com.myspring.pro30.book.vo;
 
 import org.springframework.stereotype.Component;
 
-@Component("BookVO")
+@Component("bookVO")
 public class BookVO {
 
 	private String booktitle;
-	private String writer;
+	private String bookwriter;
 	private String genre;
+	private String bookinfo;
 	
 	
 	public String getBooktitle() {
@@ -17,17 +18,26 @@ public class BookVO {
 	public void setBooktitle(String booktitle) {
 		this.booktitle = booktitle;
 	}
-	public String getWriter() {
-		return writer;
+
+	public String getBookwriter() {
+		return bookwriter;
 	}
-	public void setWriter(String writer) {
-		this.writer = writer;
+	public void setBookwriter(String bookwriter) {
+		this.bookwriter = bookwriter;
 	}
+
+
 	public String getGenre() {
 		return genre;
 	}
 	public void setGenre(String genre) {
 		this.genre = genre;
+	}
+	public String getBookinfo() {
+		return bookinfo;
+	}
+	public void setBookinfo(String bookinfo) {
+		this.bookinfo = bookinfo;
 	}
 	
 	

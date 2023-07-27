@@ -26,6 +26,7 @@ public class BookServiceImpl implements BookService{
 	@Override
 	public BookVO viewBook(String booktitle) throws Exception {
 		BookVO bookVO = bookDAO.selectBook(booktitle);
+		System.out.println("service 들어옴");
 		return bookVO;
 	}
 	

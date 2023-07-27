@@ -10,13 +10,7 @@ request.setCharacterEncoding("UTF-8");
 <html>
 <head>
 <style>
-tr {
-	background-color: yellow;
-}
 
-td {
-	background-color: white;
-}
 </style>
 <meta charset="UTF-8">
 
@@ -24,44 +18,37 @@ td {
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, user-scalable=no" />
 <link rel="stylesheet" href="../assets/css/main.css">
-<title>글목록창</title>
+<title>책목록창</title>
 </head>
-<script>
-	function fn_articleForm(isLogOn, articleForm, loginForm) {
-		if (isLogOn != '' && isLogOn != 'false') {
-			location.href = articleForm;
-		} else {
-			alert("로그인 후 글쓰기가 가능합니다.")
-			location.href = loginForm + '?action=/board/articleForm.do';
-		}
-	}
-</script>
 <body>
-	<table align="center" border="1" width="80%">
+	<table class =default align="center" border="1" width="80%">
 		<tr height="10" align="center" bgcolor="lightgreen">
-			<th>책 제목</th>
-			<th>저자</th>
-			<th>장르</th>
+			<td>번호</td>
+			<td>책 제목</td>
+			<td>저자</td>
+			<td>장르</td>
 		</tr>
 		<c:choose>
-			<c:when test="${articlesList ==null }">
+			<c:when test="${booksList ==null }">
 				<tr height="10">
 					<td colspan="4">
 						<p align="center">
 							<b><span style="font-size: 9pt;">책이 없습니다.</span></b>
+							<h1>책이 없음!!!!!!!!!!!</h1>
 						</p>
 					</td>
 				</tr>
 			</c:when>
-			<c:when test="${articlesList !=null }">
-				<c:forEach var="article" items="${articlesList }"
-					varStatus="articleNum">
+			<c:when test="${booksList !=null }">
+				<c:forEach var="book" items="${booksList }"
+					varStatus="booktitle">
 					<tr align="center">
-						<td width="5%">${articleNum.count}</td>
-
-						<td width="10%">${article.staring}</td>
-						<td width="10%">${article.id}</td>
-						<td width="10%">${article.writeDate}</td>
+						<td width="5%">${booktitle.count}</td>
+						<td width="10%">
+						<a href="${contextPath }/book/viewBook.do?booktitle=${book.booktitle}">${book.booktitle }</a>
+						</td>
+						<td width="10%">${book.bookwriter}</td>
+						<td width="5%">${book.genre}</td>
 					</tr>
 				</c:forEach>
 			</c:when>

@@ -13,9 +13,10 @@
 <head>
 <meta charset=UTF-8">
 <title>회원 정보 출력창</title>
+<link rel="stylesheet" href="../assets/css/main.css">
 </head>
 <body>
-<table border="1"  align="center"  width="80%">
+<table class =default border="1"  align="center"  width="80%">
     <tr align="center"   bgcolor="lightgreen">
       <td ><b>아이디</b></td>
       <td><b>비밀번호</b></td>

@@ -12,7 +12,7 @@ public interface BookController {
 	
 	
 	
-	public ModelAndView viewArticle(@RequestParam("booktitle") String booktitle,
+	public ModelAndView viewBook(@RequestParam("booktitle") String booktitle,
 			                        HttpServletRequest request, HttpServletResponse response) throws Exception;
 
 }
