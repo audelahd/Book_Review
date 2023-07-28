@@ -49,3 +49,4 @@ commit;
 
 select * from t_Board;
 select * from t_Book;
+select * from t_Member;
