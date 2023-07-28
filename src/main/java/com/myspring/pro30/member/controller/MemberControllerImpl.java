@@ -68,7 +68,7 @@ public class MemberControllerImpl   implements MemberController {
 			           HttpServletRequest request, HttpServletResponse response) throws Exception{
 		request.setCharacterEncoding("utf-8");
 		memberService.removeMember(id);
-		ModelAndView mav = new ModelAndView("redirect:/member/listMembers.do");
+		ModelAndView mav = new ModelAndView("redirect:/member/logout.do"); //회원 삭제시 로그아웃 
 		return mav;
 	}
 	/*

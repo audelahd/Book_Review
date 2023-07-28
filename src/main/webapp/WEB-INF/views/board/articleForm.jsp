@@ -21,6 +21,7 @@ request.setCharacterEncoding("UTF-8");
 			reader.readAsDataURL(input.files[0]);
 		}
 	}
+
 	function backToList(obj) {
 		obj.action = "${contextPath}/board/listArticles.do";
 		obj.submit();
@@ -28,23 +29,37 @@ request.setCharacterEncoding("UTF-8");
 </script>
 <link rel="stylesheet" href="../assets/css/main.css">
 <title>글쓰기창</title>
+<style>
+table {
+	padding-top: 50px;
+}
+
+.test {
+	padding-top: 30px;
+}
+</style>
 </head>
 <body>
-	<h1 style="text-align: center">글쓰기</h1>
+
+	<%
+	String booktitle = request.getParameter("booktitle");
+	%>
 	<form name="articleForm" method="post"
 		action="${contextPath}/board/addNewArticle.do"
 		enctype="multipart/form-data">
 		<table border="0" align="center">
 			<tr>
+
 				<td align="right">작성자</td>
 				<td colspan=2 align="left"><input type="text" size="20"
 					maxlength="100" value="${member.name }" readonly /></td>
 			</tr>
 			<tr>
-				<td align="right">책 제목:</td>
-				<td colspan="2"><input type="text" size="67" maxlength="500"
-					name="booktitle_" /></td>
+				<td align="right">책 제목</td>
+				<td colspan=2 align="left"><input type="text" size="20"
+					name="booktitle_" maxlength="100" value="<%=booktitle%>" readonly /></td>
 			</tr>
+
 			<tr>
 				<td align="right" valign="top"><br>리뷰 내용:</td>
 				<td colspan=2><textarea name="content" rows="10" cols="65"
@@ -68,11 +83,11 @@ request.setCharacterEncoding("UTF-8");
 
 			<tr>
 				<td align="right" valign="top"><br>별점</td>
-				<td colspan=2><textarea name="staring" rows="10" cols="65"
+				<td colspan=2><textarea name="staring" rows="10" cols="20"
 						maxlength="5"></textarea></td>
 			</tr>
-			<tr>
-				<td align="right"></td>
+			<tr id="test">
+				<td align="center"></td>
 				<td colspan="2"><input type="submit" value="글쓰기" /> <input
 					type=button value="목록보기" onClick="backToList(this.form)" /></td>
 			</tr>

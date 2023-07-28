@@ -57,11 +57,11 @@ request.setCharacterEncoding("UTF-8");
 									</c:choose></li>
 						
 								<li><a href="${contextPath}/member/listMembers.do"
-									class="no-underline">회원관리</a></li>
+									class="no-underline">회원 목록</a></li>
 								<li><a href="${contextPath}/board/listArticles.do"
-									class="no-underline">게시판관리</a></li>
+									class="no-underline">책 후기</a></li>
 								<li><a href="${contextPath}/book/listBooks.do"
-									class="no-underline">상품관리</a></li>
+									class="no-underline">책 목록</a></li>
 							</ul>
 						</nav>
 

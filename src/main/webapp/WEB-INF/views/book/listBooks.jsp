@@ -20,6 +20,8 @@ request.setCharacterEncoding("UTF-8");
 <link rel="stylesheet" href="../assets/css/main.css">
 <title>책목록창</title>
 </head>
+
+
 <body>
 	<table class =default align="center" border="1" width="80%">
 		<tr height="10" align="center">

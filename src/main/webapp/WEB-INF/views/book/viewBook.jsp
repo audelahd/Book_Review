@@ -17,6 +17,31 @@ request.setCharacterEncoding("UTF-8");
 		obj.action = "${contextPath}/book/listBooks.do";
 		obj.submit();
 	}
+	
+	 function reviewArticle(url, booktitle_){
+		 var form = document.createElement("form");
+		 form.setAttribute("method", "post");
+		 form.setAttribute("action", url);
+	     var booktitle_Input = document.createElement("input");
+	     booktitle_Input.setAttribute("type","hidden");
+	     booktitle_Input.setAttribute("name","booktitle_");
+	     booktitle_Input.setAttribute("value", booktitle_);
+		 
+	     form.appendChild(booktitle_Input);
+	     document.body.appendChild(form);
+	     form.submit();
+	 }
+
+
+	function fn_articleForm(isLogOn, articleForm, loginForm) {
+		if (isLogOn != '' && isLogOn != 'false') {
+			location.href = articleForm;
+		} else {
+			alert("로그인 후 글쓰기가 가능합니다.")
+			location.href = loginForm
+					+ '?action=/board/articleForm.do?booktitle=${book.booktitle}';
+		}
+	}
 </script>
 
 <style>
@@ -25,8 +50,9 @@ request.setCharacterEncoding("UTF-8");
 	align: center;
 	width: 80%;
 }
-#test{
-	padding-bottom:50px;
+
+#test {
+	padding-bottom: 50px;
 }
 
 li {
@@ -94,8 +120,10 @@ ul {
 					<div id="fifth">
 						<div class="emojiright">
 							<p class="coffeename">${book.booktitle}</p>
-							<p class="coffeename2">${book.bookwriter}/<a href ="${contextPath }/book/genreSearch.do?genre=${book.genre}">
-							${book.genre }</a></p>
+							<p class="coffeename2">${book.bookwriter}/<a
+									href="${contextPath }/book/genreSearch.do?genre=${book.genre}">
+									${book.genre }</a>
+							</p>
 						</div>
 
 					</div>
@@ -111,12 +139,28 @@ ul {
 
 				</div>
 			</div>
-
 			
+			
+			<tr id="tr_btn">	<td colspan="2" align="center">
+			
+			<input type=button value="리스트로 돌아가기" onClick="backToList(this.form)" /> </td>
+		</tr>
+
+
 		</table>
-		<div align="center" id="test">
-		<input type=button value="리스트로 돌아가기" onClick="backToList(this.form)" />
-		</div>
+		
+	</form>
+	
+	<form action="${contextPath }/board/articleForm.do">
+	<div align ="center" id ="test">
+		<input type="hidden" name="booktitle" value="${ book.booktitle }">
+		<button type="submit">이 책의 리뷰 작성</button>
+		
+		<input type=button value="이 책의 리뷰 조회"
+							onClick="location.href='${contextPath}/board/listReviews.do?booktitle_=${book.booktitle }'"/>
+		
+		
+	</div>
 	</form>
 </body>
 </html>

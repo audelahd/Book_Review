@@ -23,6 +23,73 @@ request.setCharacterEncoding("UTF-8");
 #tr_btn_modify {
 	display: none;
 }
+
+
+
+.second {
+	padding-top: 50px;
+	align: center;
+	width: 80%;
+}
+
+#test {
+	padding-bottom: 50px;
+}
+
+li {
+	margin: 0;
+	padding: 0;
+}
+
+ul {
+	margin: 0;
+	padding: 0;
+	display: flex;
+	list-style: none;
+}
+
+.container {
+	width: 900px;
+} /*폭을 일정하게 담기 위한 css*/
+.coffeename {
+	font-size: 20px;
+	font-weight: bold;
+	margin-bottom: 5px;
+}
+
+.coffeename2 {
+	font-size: 13px;
+	margin-top: 3px;
+	padding-bottom: 5px;
+}
+
+.seconddetail {
+	padding-top: 17px;
+	border-top: 3px solid black;
+	font-size: 13px;
+	font-weight: bold;
+	padding-bottom: 30px;
+	border-bottom: 1px solid lightgray;
+	margin: 0;
+}
+
+.productdetail {
+justify-content: space-between;
+	display: flex;
+	border-bottom: 1px solid lightgray;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	margin: 0;
+}
+
+.productdetail span {
+	margin-left: 12px;
+	margin-right: 12px;
+	font-size: 17px;
+	font-weight: bold;
+	margin-bottom: 0;
+}
+
 </style>
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script type="text/javascript">
@@ -105,53 +172,40 @@ request.setCharacterEncoding("UTF-8");
 <body>
 	<form name="frmArticle" method="post" action="${contextPath}"
 		enctype="multipart/form-data">
-		<table border=0 align="center" class=default>
-			<tr>
-				<td width=150 align="center" bgcolor=#FF9933>글번호</td>
-				<td><input type="text" value="${article.articleNO }" disabled />
-					<input type="hidden" name="articleNO" value="${article.articleNO}" />
-				</td>
-			</tr>
-			<tr>
-				<td width="150" align="center" bgcolor="#FF9933">작성자 아이디</td>
-				<td><input type=text value="${article.id }" name="writer"
-					disabled /></td>
-			</tr>
-			<tr>
-				<td width="150" align="center" bgcolor="#FF9933">책 제목</td>
-				<td><input type=text value="${article.booktitle_ }"
-					name="title" id="i_title" disabled /></td>
-			</tr>
-			<tr>
-				<td width="150" align="center" bgcolor="#FF9933">내용</td>
-				<td><textarea rows="20" cols="60" name="content" id="i_content"
-						disabled>${article.content }</textarea></td>
-			</tr>
+		<table>
+			<div class="container" align="center">
 
-			<tr>
-				<td width="50" align="center" bgcolor="#FF9933">별점</td>
-				<td><textarea rows="20" cols="60" name="staring" id="i_staring"
-						disabled>${article.staring }</textarea></td>
-			</tr>
-			<tr>
-				<td width="50" align="center" bgcolor="#FF9933">추천 수</td>
-				<td><textarea rows="20" cols="60" name="reco" id="i_reco"
-						disabled>${article.reco }</textarea></td>
-			</tr>
 
-			<tr>
-				<td width="150" align="center" bgcolor="#FF9933">등록일자</td>
-				<td><input type=text
-					value="<fmt:formatDate value="${article.writeDate}" />" disabled />
-				</td>
-			</tr>
+				<div class="second">
+					<div id="fifth">
+						<div class="emojiright">
+							<p class="coffeename">${article.booktitle_} - 후기</p>
+							<p class="coffeename2">${article.articleNO} / 작성자 : ${article.id}
+							</p>
+						</div>
+
+					</div>
+
+					<p class="seconddetail">리뷰 내용</p>
+					<p class="seconddetail">${article.content }</p>
+
+					<div class="productdetail">
+						<span>별점 : ${article.staring } </span><span> 추천 수 : ${article.reco }</span>
+					</div>
+					
+					<div> <p class ="coffeename">${article.writeDate}</p></div>
+
+
+
+				</div>
+			</div>
+			
 			<tr id="tr_btn_modify" align="center">
 				<td colspan="2"><input type=button value="수정반영하기"
 					onClick="fn_modify_article(frmArticle)"> <input type=button
 					value="취소" onClick="backToList(frmArticle)"></td>
 			</tr>
-		
-
+			
 			<tr id="tr_btn">
 				<td colspan="2" align="center"><c:if
 						test="${member.id == article.id }">
@@ -161,6 +215,7 @@ request.setCharacterEncoding("UTF-8");
 					</c:if> <input type=button value="리스트로 돌아가기"
 					onClick="backToList(this.form)"></td>
 			</tr>
+
 		</table>
 	</form>
 	
@@ -168,16 +223,12 @@ request.setCharacterEncoding("UTF-8");
 		name="recform">
 
 		<table>
-
-			
 			<tr>
-				
 				<td colspan=5 align="center">
 				<input type=button value="추천"
 							onClick="fn_remove_article('${contextPath}/board/recoUp.do', ${article.articleNO})">
 			</tr>
 
-			
 		</table>
 	</form>
 	

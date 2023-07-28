@@ -31,13 +31,24 @@
     ]]>
 	</select>
 
+	<!-- 해당 책 리뷰 모으기 -->
+
+	<select id="selectAllReviewList" resultMap="articlesResult"
+		parameterType="String">
+   <![CDATA[
+      SELECT * from t_board	
+      where
+      booktitle_ = #{booktitle_}	
+    ]]>
+
+	</select>
 
 	<!--단일이미지 추가 -->
 
 	<insert id="insertNewArticle" parameterType="java.util.Map">
 		<![CDATA[
 			INSERT into t_board(articleNO,   content, staring, id, booktitle_)
-			VALUES(#{articleNO},	#{content}, #{staring},	#{id},  #{booktitle_})
+			VALUES(seq_boardnum.nextval,	#{content}, #{staring},	#{id},  #{booktitle_})
 		]]>
 	</insert>
 
@@ -54,6 +65,10 @@
       where articleNO = #{articleNO}		
     ]]>
 	</select>
+
+
+
+
 
 	<update id="updateArticle" parameterType="java.util.Map">
 		update t_board

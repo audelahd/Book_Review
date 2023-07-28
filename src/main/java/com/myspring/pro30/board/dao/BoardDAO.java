@@ -10,7 +10,11 @@ import com.myspring.pro30.board.vo.ArticleVO;
 
 public interface BoardDAO {
 	public List selectAllArticlesList() throws DataAccessException;
+	public List selectAllReviewList(String booktitle_)throws DataAccessException;
+	
 	public int insertNewArticle(Map articleMap) throws DataAccessException;
+	
+	
 	//public void insertNewImage(Map articleMap) throws DataAccessException;
 	public ArticleVO selectArticle(int articleNO) throws DataAccessException;
 	public void updateReco(int articleNO) throws DataAccessException;

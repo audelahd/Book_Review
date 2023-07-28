@@ -12,7 +12,9 @@ import org.springframework.web.servlet.ModelAndView;
 public interface BoardController {
 
 	public ModelAndView listArticles(HttpServletRequest request, HttpServletResponse response) throws Exception;
-
+	
+	public ModelAndView listArticles(@RequestParam("booktitle_")String booktitle_, HttpServletRequest request, HttpServletResponse response) throws Exception;
+	
 	public ResponseEntity addNewArticle(MultipartHttpServletRequest multipartRequest, HttpServletResponse response)
 			throws Exception;
 

@@ -24,6 +24,11 @@ public class BoardServiceImpl  implements BoardService{
         return articlesList;
 	}
 	
+	public List<ArticleVO> listArticles(String booktitle_)throws Exception{
+		List<ArticleVO> articlesList = boardDAO.selectAllReviewList(booktitle_);
+		return articlesList;
+	}
+	
  	
 	 //���� ���� ���̱�
 	@Override
@@ -37,6 +42,7 @@ public class BoardServiceImpl  implements BoardService{
 	//���� �̹��� �߰��ϱ�
 	@Override
 	public int addNewArticle(Map articleMap) throws Exception{
+		System.out.println("1");
 		return boardDAO.insertNewArticle(articleMap);
 	}
 	

@@ -7,6 +7,8 @@ import com.myspring.pro30.board.vo.ArticleVO;
 
 public interface BoardService {
 	public List<ArticleVO> listArticles() throws Exception;
+	public List<ArticleVO> listArticles(String booktitle_) throws Exception;
+	
 	public int addNewArticle(Map articleMap) throws Exception;
 	public void RECOUP(int articleNO) throws Exception;
 	public ArticleVO viewArticle(int articleNO) throws Exception;

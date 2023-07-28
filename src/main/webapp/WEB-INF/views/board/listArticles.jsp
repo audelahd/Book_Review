@@ -36,6 +36,7 @@ request.setCharacterEncoding("UTF-8");
 			<td>추천 수</td>
 			<td>작성자</td>
 			<td>작성일</td>
+		
 		</tr>
 		<c:choose>
 			<c:when test="${articlesList ==null }">
@@ -51,23 +52,21 @@ request.setCharacterEncoding("UTF-8");
 				<c:forEach var="article" items="${articlesList }"
 					varStatus="articleNum">
 					<tr align="center">
-						<td width="20%">${articleNum.count}</td>
-						<td><a
+						<td width="10%">${articleNum.count}</td>
+						<td width="20%"><a
 							href="${contextPath}/board/viewArticle.do?articleNO=${article.articleNO}">${article.booktitle_ }</a>
 						</td>
-						<td width="20%">${article.staring}</td>
+						<td width="10%">${article.staring}</td>
 						<td width="20%">${article.reco}</td>
 						<td width="20%">${article.id}</td>
 						<td width="20%">${article.writeDate}</td>
+						
 					</tr>
 				</c:forEach>
 			</c:when>
 		</c:choose>
 	</table>
-	<a
-		href="javascript:fn_articleForm('${isLogOn}','${contextPath}/board/articleForm.do', '${contextPath}/member/loginForm.do')">
-		<p>글쓰기</p>
-	</a>
+	<br><br><br><br><br><br><br>
 
 </body>
 </html>

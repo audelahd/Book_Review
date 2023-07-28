@@ -12,6 +12,7 @@
 <head>
 <meta charset="UTF-8">
 <title>회원 가입창</title>
+<link rel="stylesheet" href="../assets/css/main.css">
 <style>
    .text_center{
      text-align:center;
@@ -20,7 +21,7 @@
 </head>
 <body>
 	<form method="post"   action="${contextPath}/member/addMember.do">
-	<h1  class="text_center">회원 가입창</h1>
+	
 	<table  align="center">
 	   <tr>
 	      <td width="200"><p align="right">아이디</td>
@@ -40,7 +41,7 @@
 	    </tr>
 	    <tr>
 	       <td width="200"><p>&nbsp;</p></td>
-	       <td width="400"><input type="submit" value="가입하기"><input type="reset" value="다시입력"></td>
+	       <td width="400"><input type="submit" value="가입하기"> <input type="reset" value="다시입력"></td>
 	    </tr>
 	</table>
 	</form>
