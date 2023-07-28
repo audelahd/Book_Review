@@ -10,6 +10,7 @@ create table t_member(
     joinDate date default sysdate
 );
 
+
 CREATE TABLE t_book(
     booktitle VARCHAR2(500) NOT NULL,
     bookwriter VARCHAR2(100) NOT NULL,
@@ -24,7 +25,7 @@ CREATE TABLE t_board (
     staring float,
     writeDate DATE default SYSDATE NOT NULL,
     booktitle_ VARCHAR2(500) NOT NULL,
-    reco int,
+    reco int default 0,
     id VARCHAR2(10),
     CONSTRAINT FK_ID FOREIGN KEY(id) REFERENCES t_member(id)
 );
