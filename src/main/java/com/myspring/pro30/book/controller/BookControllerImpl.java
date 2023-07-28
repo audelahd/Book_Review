@@ -40,17 +40,22 @@ public class BookControllerImpl implements BookController{
 	@RequestMapping(value="/book/viewBook.do", method=RequestMethod.GET)
 	public ModelAndView viewBook(@RequestParam("booktitle") String booktitle, HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
-		System.out.println("잘들어옴1");
 		String viewName = (String) request.getAttribute("viewName");
-		System.out.println("잘들어옴2");
 		bookVO = bookService.viewBook(booktitle);
-		System.out.println("잘들어옴3");
 		ModelAndView mav = new ModelAndView ();
-		System.out.println("잘들어옴4");
 		mav.setViewName(viewName);
-		System.out.println("잘들어옴5");
 		mav.addObject("book", bookVO);
-		System.out.println("잘들어옴6");
+		return mav;
+	}
+
+	@Override
+	@RequestMapping(value="/book/genreSearch.do", method= {RequestMethod.GET, RequestMethod.POST})
+	public ModelAndView listBooks(@RequestParam("genre") String genre, HttpServletRequest request, HttpServletResponse response)
+			throws Exception {
+		String viewName = (String) request.getAttribute("viewName");
+		List booksList = bookService.listBooks(genre);
+		ModelAndView mav = new ModelAndView (viewName);
+		mav.addObject("booksList", booksList);
 		return mav;
 	}
 

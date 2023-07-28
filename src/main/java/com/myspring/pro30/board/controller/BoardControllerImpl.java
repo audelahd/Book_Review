@@ -66,23 +66,16 @@ public class BoardControllerImpl  implements BoardController{
 	public ResponseEntity recoUp(@RequestParam("articleNO") int articleNO, HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		
-		System.out.println("1");
 		response.setContentType("text/html; charset=UTF-8");
-		System.out.println("1");
 		ResponseEntity resEnt = null;
-		System.out.println("1");
 		HttpHeaders responseHeaders = new HttpHeaders();
-		System.out.println("1");
 		responseHeaders.add("Content-Type", "text/html; charset=utf-8");
-		System.out.println("1");
 		String message;
-		System.out.println("1");
 		
 		boardService.RECOUP(articleNO);
-		System.out.println("1");
-		message="<script> alert('추천되었습니다) location.href='"+request.getContextPath();
-		message+=" /board/listArticles.do'; </script>";
-		System.out.println("1");
+		System.out.println(request.getContextPath());
+		message="<script> alert('추천되었습니다'); location.href='"+request.getContextPath();
+		message+="/board/listArticles.do'; </script>";
 		resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
 		
 		return resEnt;
@@ -95,9 +88,11 @@ public class BoardControllerImpl  implements BoardController{
 	@ResponseBody
 	public ResponseEntity addNewArticle(MultipartHttpServletRequest multipartRequest, 
 	HttpServletResponse response) throws Exception {
+		System.out.println("addNewArticle 들어옴");
 		multipartRequest.setCharacterEncoding("utf-8");
 		Map<String,Object> articleMap = new HashMap<String, Object>();
 		Enumeration enu=multipartRequest.getParameterNames();
+		
 		while(enu.hasMoreElements()){
 			String name=(String)enu.nextElement();
 			String value=multipartRequest.getParameter(name);
@@ -112,21 +107,24 @@ public class BoardControllerImpl  implements BoardController{
 		articleMap.put("id", id);
 		articleMap.put("imageFileName", imageFileName);
 		
+		
 		String message;
 		ResponseEntity resEnt=null;
 		HttpHeaders responseHeaders = new HttpHeaders();
 		responseHeaders.add("Content-Type", "text/html; charset=utf-8");
+		
+		
 		try {
 			int articleNO = boardService.addNewArticle(articleMap);
 			if(imageFileName!=null && imageFileName.length()!=0) {
-				File srcFile = new 
-				File(ARTICLE_IMAGE_REPO+ "\\" + "temp"+ "\\" + imageFileName);
-				File destDir = new File(ARTICLE_IMAGE_REPO+"\\"+articleNO);
-				FileUtils.moveFileToDirectory(srcFile, destDir,true);
+				/*
+				 * File srcFile = new File(ARTICLE_IMAGE_REPO+ "\\" + "temp"+ "\\" +
+				 * imageFileName); File destDir = new File(ARTICLE_IMAGE_REPO+"\\"+articleNO);
+				 * FileUtils.moveFileToDirectory(srcFile, destDir,true);
+				 */
 			}
-	
 			message = "<script>";
-			message += " alert('글이 제대로 작성됨')";
+			message += " alert('글이 제대로 작성됨');";
 			message += " location.href='"+multipartRequest.getContextPath()+"/board/listArticles.do'; ";
 			message +=" </script>";
 		    resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
@@ -134,8 +132,9 @@ public class BoardControllerImpl  implements BoardController{
 			File srcFile = new File(ARTICLE_IMAGE_REPO+"\\"+"temp"+"\\"+imageFileName);
 			srcFile.delete();
 			
+			
 			message = " <script>";
-			message +=" alert('글이 제대로 작성되지 않았음')";
+			message +=" alert('글이 제대로 작성되지 않았음');";
 			message +=" location.href='"+multipartRequest.getContextPath()+"/board/articleForm.do'; ";
 			message +=" </script>";
 			resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);

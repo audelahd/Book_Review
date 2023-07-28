@@ -94,7 +94,8 @@ ul {
 					<div id="fifth">
 						<div class="emojiright">
 							<p class="coffeename">${book.booktitle}</p>
-							<p class="coffeename2">${book.bookwriter}/${book.genre }</p>
+							<p class="coffeename2">${book.bookwriter}/<a href ="${contextPath }/book/genreSearch.do?genre=${book.genre}">
+							${book.genre }</a></p>
 						</div>
 
 					</div>

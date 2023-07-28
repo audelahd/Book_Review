@@ -173,7 +173,7 @@ request.setCharacterEncoding("UTF-8");
 			<tr>
 				
 				<td colspan=5 align="center">
-				<input type=button value="삭제하기"
+				<input type=button value="추천"
 							onClick="fn_remove_article('${contextPath}/board/recoUp.do', ${article.articleNO})">
 			</tr>
 

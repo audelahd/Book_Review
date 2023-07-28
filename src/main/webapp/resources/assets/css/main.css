@@ -1340,11 +1340,11 @@ input, select, textarea {
 /* Tables */
 
 	table {
-		width: 80%;
+		width: 100%;
 	}
 
 		table.default {
-			width: 80%;
+			width: 100%;
 		}
 
 			table.default tr {

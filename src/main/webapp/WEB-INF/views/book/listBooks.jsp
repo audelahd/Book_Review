@@ -22,7 +22,7 @@ request.setCharacterEncoding("UTF-8");
 </head>
 <body>
 	<table class =default align="center" border="1" width="80%">
-		<tr height="10" align="center" bgcolor="lightgreen">
+		<tr height="10" align="center">
 			<td>번호</td>
 			<td>책 제목</td>
 			<td>저자</td>

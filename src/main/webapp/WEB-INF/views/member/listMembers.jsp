@@ -16,14 +16,14 @@
 <link rel="stylesheet" href="../assets/css/main.css">
 </head>
 <body>
-<table class =default border="1"  align="center"  width="80%">
-    <tr align="center"   bgcolor="lightgreen">
-      <td ><b>아이디</b></td>
-      <td><b>비밀번호</b></td>
-      <td><b>이름</b></td>
-      <td><b>이메일</b></td>
-      <td><b>가입일</b></td>
-      <td><b>삭제</b></td>
+<table class =default border="1"  align="center">
+    <tr align="center"  >
+      <td>아이디</td>
+      <td>비밀번호</td>
+      <td>이름</td>
+      <td>이메일</td>
+      <td>가입일</td>
+      <td>삭제</td>
    </tr>
    
  <c:forEach var="member" items="${membersList}" >     

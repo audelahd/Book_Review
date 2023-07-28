@@ -29,6 +29,12 @@ public class BookServiceImpl implements BookService{
 		System.out.println("service 들어옴");
 		return bookVO;
 	}
+
+	@Override
+	public List<BookVO> listBooks(String genre) throws Exception {
+		List<BookVO> booksList = bookDAO.selectAllGenreList(genre);
+		return booksList;
+	}
 	
 	
 

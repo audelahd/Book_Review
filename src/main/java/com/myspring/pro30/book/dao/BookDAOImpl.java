@@ -26,6 +26,14 @@ public class BookDAOImpl implements BookDAO {
 		System.out.println("DAO 들어옴");
 		return sqlSession.selectOne("mapper.book.selectBook", booktitle);
 	}
+
+	@Override
+	public List selectAllGenreList(String genre) throws DataAccessException {
+		List<BookVO> booksList = booksList = sqlSession.selectList("mapper.book.selectAllGenreList", genre);
+		return booksList;
+	}
+	
+	
 	
 	
 }

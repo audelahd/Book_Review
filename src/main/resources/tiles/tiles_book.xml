@@ -16,4 +16,10 @@
 			value="/WEB-INF/views/book/viewBook.jsp" />
 	</definition>
 
+	<definition name="/book/genreSearch" extends="baseLayout">
+		<put-attribute name="title" value="글검색창" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/book/listBooks.jsp" />
+	</definition>
+	
 </tiles-definitions>
