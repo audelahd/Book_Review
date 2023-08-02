@@ -9,17 +9,12 @@ import com.myspring.pro30.board.vo.ArticleVO;
 
 
 public interface BoardDAO {
-	public List selectAllArticlesList() throws DataAccessException;
-	public List selectAllReviewList(String booktitle_)throws DataAccessException;
-	
-	public int insertNewArticle(Map articleMap) throws DataAccessException;
-	
-	
-	//public void insertNewImage(Map articleMap) throws DataAccessException;
-	public ArticleVO selectArticle(int articleNO) throws DataAccessException;
-	public void updateReco(int articleNO) throws DataAccessException;
-	public void updateArticle(Map articleMap) throws DataAccessException;
-	public void deleteArticle(int articleNO) throws DataAccessException;
-//	public List selectImageFileList(int articleNO) throws DataAccessException;
+	public List selectAllArticlesList() throws DataAccessException; //조건 X, 모든 후기 리스트 반환
+	public List selectAllReviewList(String booktitle_)throws DataAccessException; //특정 책의 후기 리스트를 반환
+	public int insertNewArticle(Map articleMap) throws DataAccessException; // 새 후기 작성
+	public ArticleVO selectArticle(int articleNO) throws DataAccessException; //후기 조회
+	public void updateReco(int articleNO) throws DataAccessException; // 후기 추천
+	public void updateArticle(Map articleMap) throws DataAccessException; // 후기 수정
+	public void deleteArticle(int articleNO) throws DataAccessException; // 후기 삭제 
 	
 }

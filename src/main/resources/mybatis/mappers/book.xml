@@ -5,14 +5,13 @@
 
 <mapper namespace="mapper.book">
 	<resultMap id="booksResult" type="bookVO">
-
 		<result property="booktitle" column="booktitle" />
 		<result property="bookwriter" column="bookwriter" />
 		<result property="genre" column="genre" />
 		<result property="bookinfo" column="bookinfo" />
-
 	</resultMap>
 
+	<!-- t_book 테이블의 전체 데이터를 조회하는 select문 -->
 	<select id="selectAllBooksList" resultMap="booksResult">
     <![CDATA[
       SELECT booktitle, bookwriter, genre, bookinfo
@@ -20,6 +19,7 @@
     ]]>
 	</select>
 
+	<!-- 책 제목으로 t_book 테이블에 저장되어있는 특정 데이터를 조회하는 select문 -->
 	<select id="selectBook" resultType="bookVO"
 		parameterType="String">
     <![CDATA[
@@ -29,7 +29,7 @@
     ]]>
 	</select>
 
-
+	<!-- 책의 장르 이름으로 t_book 테이블의 데이터를 조회하는 select문 -->
 	<select id="selectAllGenreList" resultMap="booksResult"
 		parameterType="String">
    <![CDATA[
@@ -38,9 +38,6 @@
       where
       genre = #{genre}	
     ]]>
-
-
 	</select>
-
 
 </mapper>

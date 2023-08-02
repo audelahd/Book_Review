@@ -19,20 +19,22 @@ public class BookServiceImpl implements BookService{
 
 	@Override
 	public List<BookVO> listBooks() throws Exception {
-		List<BookVO> booksList = bookDAO.selectAllBooksList();
+		List<BookVO> booksList = bookDAO.selectAllBooksList(); 
+		//DAO의 모든 책 리스트 조회 메소드로 넘긴다
 		return booksList;
 	}
 
 	@Override
 	public BookVO viewBook(String booktitle) throws Exception {
 		BookVO bookVO = bookDAO.selectBook(booktitle);
-		System.out.println("service 들어옴");
+		//DAO의 책 상세 조회 메소드로 넘긴다. (책 제목과 함께)
 		return bookVO;
 	}
 
 	@Override
 	public List<BookVO> listBooks(String genre) throws Exception {
 		List<BookVO> booksList = bookDAO.selectAllGenreList(genre);
+		//DAO의 리스트 조회 메소드로 넘긴다 (책 장르와 함께)
 		return booksList;
 	}
 	

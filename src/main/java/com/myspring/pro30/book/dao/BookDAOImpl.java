@@ -18,18 +18,20 @@ public class BookDAOImpl implements BookDAO {
 	@Override
 	public List selectAllBooksList() throws DataAccessException {
 		List<BookVO> booksList = booksList = sqlSession.selectList("mapper.book.selectAllBooksList");
+		//모든 책들을 리스트로 반환하는 SQL문을 실행한다
 		return booksList;
 	}
 
 	@Override
 	public BookVO selectBook(String booktitle) throws DataAccessException {
-		System.out.println("DAO 들어옴");
+		//책 상세페이지를 조회하는 SQL문을 실행한다
 		return sqlSession.selectOne("mapper.book.selectBook", booktitle);
 	}
 
 	@Override
 	public List selectAllGenreList(String genre) throws DataAccessException {
 		List<BookVO> booksList = booksList = sqlSession.selectList("mapper.book.selectAllGenreList", genre);
+		//특정 장르의 책들을 리스트로 반환하는 SQL문을 실행한다
 		return booksList;
 	}
 	

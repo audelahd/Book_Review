@@ -16,75 +16,49 @@ import com.myspring.pro30.board.vo.ArticleVO;
 @Transactional(propagation = Propagation.REQUIRED)
 public class BoardServiceImpl  implements BoardService{
 	@Autowired
-	BoardDAO boardDAO;
+	BoardDAO boardDAO; //DAO로 넘겨야 하니까 하나 만들어준다
 	
 	
+	//모든 후기 반환
 	public List<ArticleVO> listArticles() throws Exception{
 		List<ArticleVO> articlesList =  boardDAO.selectAllArticlesList();
         return articlesList;
 	}
 	
+	//특정 책 후기 반환
 	public List<ArticleVO> listArticles(String booktitle_)throws Exception{
 		List<ArticleVO> articlesList = boardDAO.selectAllReviewList(booktitle_);
 		return articlesList;
 	}
 	
- 	
-	 //���� ���� ���̱�
+	//후기 상세 페이지
 	@Override
 	public ArticleVO viewArticle(int articleNO) throws Exception {
 		ArticleVO articleVO = boardDAO.selectArticle(articleNO);
 		return articleVO;
 	}
 	
-
-	
-	//���� �̹��� �߰��ϱ�
+	//후기 추가
 	@Override
 	public int addNewArticle(Map articleMap) throws Exception{
 		System.out.println("1");
 		return boardDAO.insertNewArticle(articleMap);
 	}
-	
-	 //���� �̹��� �߰��ϱ�
-	/*
-	@Override
-	public int addNewArticle(Map articleMap) throws Exception{
-		int articleNO = boardDAO.insertNewArticle(articleMap);
-		articleMap.put("articleNO", articleNO);
-		boardDAO.insertNewImage(articleMap);
-		return articleNO;
-	}
-	*/
-	/*
-	//���� ���� ���̱�
-	@Override
-	public Map viewArticle(int articleNO) throws Exception {
-		Map articleMap = new HashMap();
-		ArticleVO articleVO = boardDAO.selectArticle(articleNO);
-		List<ImageVO> imageFileList = boardDAO.selectImageFileList(articleNO);
-		articleMap.put("article", articleVO);
-		articleMap.put("imageFileList", imageFileList);
-		return articleMap;
-	}
-   */
-	
-	
-	
-	
-	
+
+	//후기 수정
 	@Override
 	public void modArticle(Map articleMap) throws Exception {
 		boardDAO.updateArticle(articleMap);
 	}
 	
+	//후기 추천
 	@Override
 	public void RECOUP(int articleNO) throws Exception {
 		boardDAO.updateReco(articleNO);
 		
 	}
 
-
+	//후기 삭제
 	@Override
 	public void removeArticle(int articleNO) throws Exception {
 		boardDAO.deleteArticle(articleNO);

@@ -69,7 +69,7 @@ public class ArticleVO {
 		this.parentNO = parentNO;
 	}
 
-	public String getStaring() {
+	public String getStaring() { //별점을 불러올 때 별 아이콘으로 불러온다.
 
 		String result = "";
 

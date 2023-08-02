@@ -17,10 +17,7 @@
 
 	</resultMap>
 
-	<!-- <resultMap id="imgResult" type="imageVO"> <result property="imageFileNO" 
-		column="imageFileNO" /> <result property="articleNO" column="articleNO" /> 
-		<result property="imageFileName" column="imageFileName" /> </resultMap> -->
-
+	<!-- 전체 후기 글 => 즉, t_board 테이블 내의 모든 데이터 select -->
 	<select id="selectAllArticlesList" resultMap="articlesResult">
     <![CDATA[
       SELECT level, articleNO, parentNO, content, staring, writeDate,id, booktitle_, reco
@@ -31,8 +28,7 @@
     ]]>
 	</select>
 
-	<!-- 해당 책 리뷰 모으기 -->
-
+	<!-- 특정 책 리뷰 모으기 -->
 	<select id="selectAllReviewList" resultMap="articlesResult"
 		parameterType="String">
    <![CDATA[
@@ -40,11 +36,9 @@
       where
       booktitle_ = #{booktitle_}	
     ]]>
-
 	</select>
 
-	<!--단일이미지 추가 -->
-
+	<!-- 새 후기 글을 업로드하는 insert문 실행 -->
 	<insert id="insertNewArticle" parameterType="java.util.Map">
 		<![CDATA[
 			INSERT into t_board(articleNO,   content, staring, id, booktitle_)
@@ -52,12 +46,14 @@
 		]]>
 	</insert>
 
+	<!-- 새 글을 만들기 전에 새 후기 글 번호를 생성하기 위한 가장 큰 글 번호 select문 실행 -->
 	<select id="selectNewArticleNO" resultType="int">
 		<![CDATA[
 			SELECT  nvl(max(articleNO), 0) + 1 from t_board		
 		]]>
 	</select>
 
+	<!-- 선택한 후기 글 번호의 상세 페이지를 확인할 수 있도록 select문 실행 -->
 	<select id="selectArticle" resultType="articleVO"
 		parameterType="int">
     <![CDATA[
@@ -66,28 +62,24 @@
     ]]>
 	</select>
 
-
-
-
-
+	<!-- 수정한 정보로 업데이트문 실행 -->
 	<update id="updateArticle" parameterType="java.util.Map">
 		update t_board
-		set content=#{content},
+		set
+		content=#{content},
 		staring=#{staring}
-		<!-- <if test="imageFileName!='' and imageFileName!=null"> , imageFileName=#{imageFileName} 
-			</if> -->
 		where articleNO=#{articleNO}
 	</update>
 
+	<!-- 추천 수가 올라가도록 업데이트문 실행 -->
 	<update id="recoUp" parameterType="int">
 		update t_board
 		set
 		reco=reco+1
 		where articleNO=#{articleNO}
-
-
 	</update>
 
+	<!-- 선택한 후기 글 번호를 삭제하는 delete문 실행 -->
 	<delete id="deleteArticle" parameterType="int">
     <![CDATA[
       delete from t_board
@@ -98,20 +90,6 @@
     ]]>
 	</delete>
 
-	<!--다중 이미지 추가 SQL문 -->
-	<!-- <insert id="insertNewArticle" parameterType="java.util.Map"> <![CDATA[ 
-		insert into t_board(articleNO, id, title, content, imageFileName) values(#{articleNO}, 
-		#{id}, #{title}, #{content}, null) ]]> </insert> <insert id="insertNewImage" 
-		parameterType="java.util.Map"> <foreach item="item" collection="list" open="INSERT 
-		ALL" separator=" " close="SELECT * FROM DUAL" > INTO t_imageFile(imageFileNO, 
-		imageFileName, articleNO, regDate) VALUES (#{item.imageFileNO}, #{item.imageFileName}, 
-		#{item.articleNO}, sysdate) </foreach> </insert> -->
 
-	<!-- <select id="selectNewImageFileNO" resultType="int" > <![CDATA[ SELECT 
-		nvl(max(imageFileNO),0) from t_imageFile ]]> </select> -->
-
-
-	<!-- <select id="selectImageFileList" resultMap="imgResult" parameterType="int"> 
-		<![CDATA[ SELECT * from t_imageFile where articleNO=#{articleNO} ]]> </select> -->
 
 </mapper>
